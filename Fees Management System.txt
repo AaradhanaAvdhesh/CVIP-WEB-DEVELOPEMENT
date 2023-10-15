@@ -1,0 +1,59 @@
+class Student:
+    def __init__(self, student_id, name):
+        self.student_id = student_id
+        self.name = name
+        self.fees_paid = 0
+
+    def pay_fees(self, amount):
+        self.fees_paid += amount
+
+    def display_student(self):
+        print(f"Student ID: {self.student_id}")
+        print(f"Name: {self.name}")
+        print(f"Fees Paid: {self.fees_paid}")
+        print("------------")
+
+
+class FeesManagementSystem:
+    def __init__(self):
+        self.students = []
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def display_all_students(self):
+        for student in self.students:
+            student.display_student()
+
+    def collect_fees(self, student_id, amount):
+        for student in self.students:
+            if student.student_id == student_id:
+                student.pay_fees(amount)
+                print(f"Fees collected from {student.name}.")
+                return
+        print(f"Student with ID {student_id} not found.")
+
+# Example Usage:
+
+# Creating students
+student1 = Student(1, "John Doe")
+student2 = Student(2, "Jane Smith")
+
+# Creating a fees management system
+fees_system = FeesManagementSystem()
+
+# Adding students to the system
+fees_system.add_student(student1)
+fees_system.add_student(student2)
+
+# Displaying all students
+print("All Students:")
+fees_system.display_all_students()
+
+# Collecting fees
+fees_system.collect_fees(1, 500)
+fees_system.collect_fees(2, 750)
+
+# Displaying updated student information
+print("Updated Student Information:")
+fees_system.display_all_students()
