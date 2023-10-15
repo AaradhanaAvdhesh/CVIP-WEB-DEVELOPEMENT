@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class BMICalculator {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter weight in kilograms
+        System.out.print("Enter your weight in kilograms: ");
+        double weight = scanner.nextDouble();
+
+        // Prompt the user to enter height in meters
+        System.out.print("Enter your height in meters: ");
+        double height = scanner.nextDouble();
+
+        // Calculate BMI
+        double bmi = calculateBMI(weight, height);
+
+        // Interpret BMI and display the result
+        displayBMIResult(bmi);
+
+        // Close the Scanner
+        scanner.close();
+    }
+
+    // Method to calculate BMI
+    private static double calculateBMI(double weight, double height) {
+        return weight / (height * height);
+    }
+
+    // Method to interpret BMI and display the result
+    private static void displayBMIResult(double bmi) {
+        System.out.println("Your BMI is: " + bmi);
+
+        // Interpret BMI and provide health category
+        if (bmi < 18.5) {
+            System.out.println("Category: Underweight");
+        } else if (bmi < 25) {
+            System.out.println("Category: Normal Weight");
+        } else if (bmi < 30) {
+            System.out.println("Category: Overweight");
+        } else {
+            System.out.println("Category: Obese");
+        }
+    }
+}
